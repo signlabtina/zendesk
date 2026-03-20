@@ -1,1 +1,99 @@
+<!DOCTYPE html>
+<html lang="{{locale}}" dir="{{page_dir}}">
+  {{partial 'document_head'}}
+  <body>
 
+    {{partial 'header'}}
+
+    <!-- Page hero -->
+    <div class="page-hero">
+      <div class="page-hero__inner">
+        <h1 class="page-hero__title">{{article.title}}</h1>
+      </div>
+      <div class="page-hero__wave" aria-hidden="true">
+        <svg viewBox="0 0 1440 56" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M0 56h1440V28C1200 0 960 56 720 56S240 0 0 28V56z" fill="#FBFBFB"/>
+        </svg>
+      </div>
+    </div>
+
+    <!-- Breadcrumb -->
+    <nav class="breadcrumb" aria-label="Breadcrumb">
+      {{breadcrumbs}}
+    </nav>
+
+    <div class="page-wrap">
+      <div class="article-container">
+
+        <!-- Article body -->
+        <article class="article-body">
+          <header class="article-header">
+            <h1>{{article.title}}</h1>
+            <div class="article-meta">
+              <span>{{t 'by_author' author=article.author.name}}</span>
+              <span>{{date article.created_at timeago=true}}</span>
+              {{#if article.edited_at}}
+                <span>{{t 'last_updated'}} {{date article.edited_at timeago=true}}</span>
+              {{/if}}
+            </div>
+          </header>
+
+          <div class="article-content">
+            {{article.body}}
+          </div>
+
+          <!-- Helpful vote -->
+          <div class="article-vote">
+            <p>{{t 'was_this_article_helpful'}}</p>
+            <div class="vote-btns">
+              <button class="vote-btn" id="vote-yes">
+                <svg width="16" height="16" viewBox="0 0 20 20" fill="none" aria-hidden="true">
+                  <path d="M7 10l2.5 2.5L14 7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                  <circle cx="10" cy="10" r="8.5" stroke="currentColor" stroke-width="1.5"/>
+                </svg>
+                {{t 'yes'}}
+              </button>
+              <button class="vote-btn" id="vote-no">
+                <svg width="16" height="16" viewBox="0 0 20 20" fill="none" aria-hidden="true">
+                  <path d="M7 7l6 6M13 7l-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                  <circle cx="10" cy="10" r="8.5" stroke="currentColor" stroke-width="1.5"/>
+                </svg>
+                {{t 'no'}}
+              </button>
+            </div>
+          </div>
+        </article>
+
+        <!-- Sidebar -->
+        <aside class="article-sidebar">
+
+          {{#if section.articles}}
+          <div class="related-card">
+            <p class="related-card__label">{{t 'related_articles'}}</p>
+            <ul class="related-card__list">
+              {{#each section.articles}}
+                <li>
+                  <a href="{{url}}" class="related-card__item">{{title}}</a>
+                </li>
+              {{/each}}
+            </ul>
+          </div>
+          {{/if}}
+
+          <div class="related-card">
+            <p class="related-card__label">Need more help?</p>
+            <ul class="related-card__list">
+              <li><a href="{{url 'home_page'}}" class="related-card__item">Back to FAQ</a></li>
+              <li><a href="{{url 'new_request_page'}}" class="related-card__item">Contact support</a></li>
+            </ul>
+          </div>
+
+        </aside>
+
+      </div>
+    </div>
+
+    {{partial 'footer'}}
+
+  </body>
+</html>

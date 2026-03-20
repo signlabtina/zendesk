@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="{{locale}}" dir="{{page_dir}}">
+  {{partial 'document_head'}}
+  <body>
+
+    {{partial 'header'}}
+
+    <div class="page-hero">
+      <div class="page-hero__inner">
+        <h1 class="page-hero__title">{{section.name}}</h1>
+        {{#if section.description}}
+          <p class="page-hero__sub">{{section.description}}</p>
+        {{/if}}
+      </div>
+      <div class="page-hero__wave" aria-hidden="true">
+        <svg viewBox="0 0 1440 56" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M0 56h1440V28C1200 0 960 56 720 56S240 0 0 28V56z" fill="#FBFBFB"/>
+        </svg>
+      </div>
+    </div>
+
+    <nav class="breadcrumb" aria-label="Breadcrumb">{{breadcrumbs}}</nav>
+
+    <div class="page-wrap">
+      <ul class="article-list" role="list">
+        {{#each articles}}
+          <li>
+            <a href="{{url}}" class="article-list-item">
+              <span class="article-list-item__icon" aria-hidden="true">
+                <svg width="18" height="18" viewBox="0 0 20 20" fill="none">
+                  <path d="M5 4h10a1 1 0 011 1v10a1 1 0 01-1 1H5a1 1 0 01-1-1V5a1 1 0 011-1z" stroke="currentColor" stroke-width="1.6"/>
+                  <path d="M7 8h6M7 11h4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+                </svg>
+              </span>
+              <span class="article-list-item__title">{{title}}</span>
+              <span class="article-list-item__arrow" aria-hidden="true">
+                <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                  <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </span>
+            </a>
+          </li>
+        {{/each}}
+      </ul>
+    </div>
+
+    {{partial 'footer'}}
+
+  </body>
+</html>
