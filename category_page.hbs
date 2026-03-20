@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="{{locale}}" dir="{{page_dir}}">
+  {{partial 'document_head'}}
+  <body>
+
+    {{partial 'header'}}
+
+    <div class="page-hero">
+      <div class="page-hero__inner">
+        <h1 class="page-hero__title">{{category.name}}</h1>
+        {{#if category.description}}
+          <p class="page-hero__sub">{{category.description}}</p>
+        {{/if}}
+      </div>
+      <div class="page-hero__wave" aria-hidden="true">
+        <svg viewBox="0 0 1440 56" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M0 56h1440V28C1200 0 960 56 720 56S240 0 0 28V56z" fill="#FBFBFB"/>
+        </svg>
+      </div>
+    </div>
+
+    <nav class="breadcrumb" aria-label="Breadcrumb">{{breadcrumbs}}</nav>
+
+    <div class="page-wrap">
+      <div class="categories-grid">
+        {{#each sections}}
+          <a href="{{url}}" class="category-card">
+            <div class="category-card__icon" aria-hidden="true">📂</div>
+            <div class="category-card__body">
+              <p class="category-card__name">{{name}}</p>
+              {{#if description}}
+                <p class="category-card__desc">{{description}}</p>
+              {{/if}}
+              <span class="category-card__count">{{articles_count}} {{t 'articles'}}</span>
+            </div>
+          </a>
+        {{/each}}
+      </div>
+    </div>
+
+    {{partial 'footer'}}
+
+  </body>
+</html>
